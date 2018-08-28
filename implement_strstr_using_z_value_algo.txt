@@ -1,0 +1,52 @@
+void func(string str,int z[])
+{
+    int l,r,i,k;
+    l=r=0;
+    int n=str.length();
+    for(i=1;i<n;i++)
+    {
+        if(i>r)
+        {
+            l=r=i;
+            while(r<n&&str[r-l]==str[r])
+            {
+                r++;
+            }
+            z[i]=r-l;
+            r--;
+        }
+        else
+        {
+            k=i-l;
+            if(z[k]<r-i+1)
+            z[i]=z[k];
+            else
+            {
+                l=i;
+                while(r<n&&str[r-l]==str[r])
+                {
+                    r++;
+                }
+                z[i]=r-l;
+                r--;
+            }
+        }
+    }
+}
+int Solution::strStr(const string A, const string B) 
+{
+    string con=B+"$"+A;
+    int len=con.length();
+    int z[len],flag=1,i;
+    func(con,z);
+    for(i=0;i<len;i++)
+    {
+        if(z[i]==B.length())
+        {
+            flag=0;
+            return(i-B.length()-1);
+        }
+    }
+    if(flag==1)
+    return -1;
+}
