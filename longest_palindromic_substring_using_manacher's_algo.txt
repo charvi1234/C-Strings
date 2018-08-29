@@ -1,0 +1,93 @@
+/**
+ * @input A : String termination by '\0'
+ * 
+ * @Output string. Make sure the string ends with null character
+ */
+ int min(int x,int y)
+ {
+     if(x<y)
+     return x;
+     else
+     return y;
+ }
+char* longestPalindrome(char* A) 
+{
+    int i,len,j=0,start=0,end=0;
+    len=strlen(A);
+    char str[1000000];
+    for(i=0;i<len;i++)
+    {
+    str[j]='$';
+    str[j+1]=A[i];
+    j=j+2;
+    }
+    str[j]='$';
+    j++;
+    str[j]='\0';
+    int len2;
+    len2=strlen(str);
+    int *arr=(int*)malloc(sizeof(int)*len2);
+    for(i=0;i<len2;i++)
+    arr[i]=1;
+    for(i=0;i<len2;)
+    {
+        while(start>0&&end<len2&&str[start]==str[end])
+        {
+            start--;
+            end++;
+        }
+        if(str[start]!=str[end])
+        {
+        start++;
+        end--;
+        }
+        arr[i]=end-start+1;
+        int newcenter=end+1;
+        for(j=i+1;j<=end;j++)
+        {
+            if(j+arr[i-(j-i)]/2<end)
+            {
+                arr[j]=arr[i-(j-i)];
+            }
+              else
+              {
+                arr[j]=min(arr[i-(j-i)],2*(end-j)+1);
+              }
+            if(j+arr[i-(j-i)]/2==end)
+            {
+                newcenter=j;
+                break;
+            }
+        }
+            i=newcenter;
+            start=i;
+            end=i;
+    }
+    int max=-999999;
+    for(i=0;i<len2;i++)
+    {
+        if(arr[i]>max)
+        {
+        max=arr[i];
+        }
+    }
+    for(i=0;i<len2;i++)
+    {
+        if(arr[i]==max)
+        break;
+    }
+    static char str1[10000];
+    int p=0;
+    start=i-(arr[i]/2);
+    end=i+(arr[i]/2);
+    for(j=start;j<=end;j++)
+    {
+        if(str[j]!='$')
+        {
+            str1[p]=str[j];
+            p++;
+        }
+    }
+    str1[p]='\0';
+    return str1;
+}
