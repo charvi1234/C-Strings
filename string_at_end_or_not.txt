@@ -1,0 +1,24 @@
+#include<string.h>
+int strAtEnd(char *str1, char* str2)
+{
+int len=strlen(str2);
+int len1=strlen(str1);
+int j=len-1,i;
+int count=0;
+  i=len1-1;
+  if(str1[i]==str2[j])
+  {
+    while(str1[i]==str2[j]&&j<len)
+    {
+      i--;
+      j--;
+      count++;
+    }
+  }
+  else
+    return 0;
+  if(count==len)
+  {
+    return 1;
+  }
+}
