@@ -1,3 +1,18 @@
+/*
+Sample Input
+
+3
+act cat
+CodeQuotient QuotientCode
+Hello Hillo
+
+Sample Output
+
+YES
+YES
+NO
+*/
+
 #include<string.h>
 void isAnagram(char *str1, char* str2)
 {
