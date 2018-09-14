@@ -1,0 +1,48 @@
+#include<string.h>
+void isAnagram(char *str1, char* str2)
+{
+  int i,j,count=0,flag=0;
+  char temp;
+  int len1=strlen(str1);
+  int len2=strlen(str2);
+  if(len1!=len2)
+    printf("NO");
+  else
+  {
+    for(i=0;i<len1-1;i++)
+    {
+      for(j=0;j<len1-i-1;j++)
+      {
+        if(str1[j]>str1[j+1])
+        {
+          temp=str1[j];
+          str1[j]=str1[j+1];
+          str1[j+1]=temp;
+        }
+      }
+    }
+    for(i=0;i<len1-1;i++)
+    {
+      for(j=0;j<len1-i-1;j++)
+      {
+        if(str2[j]>str2[j+1])
+        {
+          temp=str2[j];
+          str2[j]=str2[j+1];
+          str2[j+1]=temp;
+        }
+      }
+    }
+    for(i=0;i<len1;i++)
+    {
+      if(str1[i]!=str2[i])
+      {
+        flag=1;
+        printf("NO");
+        break;
+      }
+    }
+    if(flag==0)
+      printf("YES");
+  }
+}
