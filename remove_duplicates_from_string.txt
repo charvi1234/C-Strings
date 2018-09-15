@@ -17,7 +17,6 @@ int arr[100];
     if(arr[i]>=1)
     {
       str2[k]=i+97;
-      //printf("%c",str2[k]);
       k++;
     }
   }
