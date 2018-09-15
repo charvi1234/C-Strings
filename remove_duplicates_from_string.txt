@@ -1,3 +1,14 @@
+/*
+Sample Input
+2
+aabbccdef
+abddddddd
+
+Sample Output
+abcdef
+abd
+*/
+
 #include<string.h>
 void remDuplicates(char *str)
 {
