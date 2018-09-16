@@ -1,0 +1,43 @@
+/*
+Sample Input
+
+2
+Code Quotient Loves Code
+Hello Coders
+Sample Output
+
+edoC tneitouQ sevoL edoC
+olleH sredoC
+*/
+
+#include<string.h>
+void revWordsString(char *str)
+{
+  int len;
+  int i,k=0,j,q,m;
+  len=strlen(str);
+  char str2[1000];
+  for(i=0;i<len;)
+  {
+    for(j=i;str[j]!=' ';j++)
+    {
+      if(j==len)
+        break;
+      k++;
+    }
+    q=k;
+    k=k-1+i;
+    for(m=i;k>=i;)
+    {
+      str2[m]=str[k];
+      k--;
+      m++;
+    }
+    str2[m]=32;
+    k=q;
+    i=i+k+1;
+    k=0;
+  }
+    str2[m]='\0';
+  strcpy(str,str2);
+}
