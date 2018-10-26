@@ -1,3 +1,10 @@
+/*
+Input: path[] = "GLGLGLG"
+Output: Given sequence of moves is circular 
+
+Input: path[] = "GLLG"
+Output: Given sequence of moves is circular 
+*/
 #include<stdio.h>
 void main()
 {
